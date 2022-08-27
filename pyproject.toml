@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "coolpi"
+version = "0.1.4"
+authors = [
+  { name="Adolfo Molada Tebar", email="admote@doctor.upv.es"}]
+
+dependencies = [
+  "numpy>=1.22", 
+  "opencv-python>=4.6", 
+  "pandas>=1.4", 
+  "PySide6>=6.3", 
+  "rawpy>=0.17", 
+  "scipy>=1.8", 
+  "seaborn>=0.11",
+  "matplotlib>=3.5"]
+
+description = "Colour Operations Library for the Processing of Images"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3.9",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"INDIGO" = "https://projectindigo.eu"
+"Ludwig Boltzmann Institut"= "https://archpro.lbg.ac.at"
+"GitHub" = "https://github.com/GraffitiProjectINDIGO/coolpi"
+"Source" = "https://github.com/GraffitiProjectINDIGO/coolpi/src"
+"Documentation" ="https://github.com/GraffitiProjectINDIGO/coolpi/doc"
+"Notebooks" = "https://github.com/GraffitiProjectINDIGO/coolpi/notebooks"
