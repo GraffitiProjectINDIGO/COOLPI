@@ -97,7 +97,7 @@ to help users become familiar with the classes, methods and functions implemente
 
 Users can find the interative Jupyter Notebooks in the [notebook folder of the coolpi repository on GitHub](https://github.com/GraffitiProjectINDIGO/coolpi/notebooks).
 
-In order to use the iterative notebooks, [JupyterLab](https://jupyter.org/install), or its extension in the code editor used, 
+In order to use the interactive notebooks, [JupyterLab](https://jupyter.org/install), or its extension in the code editor used, 
 must be installed beforehand.
 
 # GUI
