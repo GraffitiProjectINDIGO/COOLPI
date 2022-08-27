@@ -42,7 +42,7 @@ The auxiliary functions are designed to support the coolpi library classes, they
 However, they can be imported and used directly from Python if desired.
 
 The colour module is one of the pillars of the coolpi package, and is based on the colorimetric recommendations 
-of the CIE [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/). This module includes the CIE], Colour and 
+of the CIE [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/). This module includes the CIE, Colour and 
 Spectral main classes, and the implementation of the basic tools for the colorimetric and spectral treatment of the data.
 
 The acquisition of colour-accurate digital images is one of the primary research topics in the international graffiti project [INDIGO](https://projectindigo.eu/). 
