@@ -89,7 +89,6 @@ to help users become familiar with the classes, methods and functions implemente
 - 02b CSC - Colour Space Conversion
 - 02c CSC - Data test (Ohta&Robertson 2005)
 - 03a Spectral objects
-- 03b CTT Calculations Test data (Fontecha et al. 2002)
 - 04a Colour-difference
 - 04b CIEDE2000 - Test data (Sharma et al., 2005)
 - 05 ColourChecker objects
