@@ -2,7 +2,6 @@
 
 # Description
 
-<div style="text-align: justify">
 The Colour Operations Library for the Processing of Images (coolpi) is an open-source toolbox programmed in Python for the treatment of colorimetric
 and spectral data. It includes classes, methods and functions developed and tested following the colorimetric standards 
 published by the Commission Internationale de l'Éclairage [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/).
@@ -19,11 +18,7 @@ Although the coolpi package has been designed mainly for Cultural Heritage docum
 imaging techniques, we are confident that its applicability can be extended to any discipline where colour accurate 
 registration is required.
 
-</div>
-
 # Modules
-
-<div style="text-align: justify">
 
 The coolpi library is structured in the following oriented objected programming (OOP) modules:
 
@@ -34,8 +29,6 @@ The coolpi library is structured in the following oriented objected programming 
 The coolpi auxilary module integrates functions that are used in the classes to carry out operations related to data loading and checking,
 creation and display of colorimetric and spectral graphs, and so on. It also includes the errors module, with the exceptions associated with each of the classes. 
 
-</div>
-
 The recommended way to import the auxiliary modules is as follows:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
@@ -45,10 +38,8 @@ The recommended way to import the auxiliary modules is as follows:
 >>> import coolpi.auxiliary.plot as cpt
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- <div style="text-align: justify">
-
 The auxiliary functions are designed to support the coolpi library classes, they are not intended to be used independently by the user. 
-However, they can be imported and used directly from Python if desired.*
+However, they can be imported and used directly from Python if desired.
 
 The colour module is one of the pillars of the coolpi package, and is based on the colorimetric recommendations 
 of the CIE [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/). This module includes the CIE], Colour and 
@@ -61,26 +52,20 @@ to process and obtain accurate-colour data from digital images, especially in RA
 In addition, a graphical interface GUI has been designed that integrates the main functionalities of the coolpi library, 
 especially designed for non-programmer users. 
 
-</div>
-
 # Installation
 
-<div style="text-align: justify">
 The coolpi package can be installed directly from [PyPi](https://pypi.org/) running the pip command 
-on the system shell:</div>
+on the system shell:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> pip install coolpi
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<div style="text-align: justify">
 The coolpi package is based on Python 3.9. It is therefore recommended not to work  with lower python versions, 
 as the correct functioning of the library is not guaranteed.</div>
 
-
 # Dependencies
 
-<div style="text-align: justify">
 For the proper operation of coolpi, the following packages must be installed together:
 
 - Create plots and figures: [matplotlib 3.5.2](https://matplotlib.org/stable/index.html) 
@@ -94,11 +79,8 @@ For the proper operation of coolpi, the following packages must be installed tog
 
 The dependencies should have been installed automatically along with coolpi. Please check that everything is correct.
 
-</div>
-
 # Notebooks
 
-<div style="text-align: justify">
 A series of interactive [Jupyter Notebooks](https://jupyter.org) have been prepared. They include practical examples 
 to help users become familiar with the classes, methods and functions implemented in the coolpi package. 
 
@@ -113,21 +95,18 @@ to help users become familiar with the classes, methods and functions implemente
 - 05 ColourChecker objects
 - 06 Image objects
 
-Users can find the interative Jupyter Notebooks in the [notebook folder of the coolpi repository on GitHub]().
+Users can find the interative Jupyter Notebooks in the [notebook folder of the coolpi repository on GitHub](https://github.com/GraffitiProjectINDIGO/coolpi/notebooks).
 
 In order to use the iterative notebooks, [JupyterLab](https://jupyter.org/install), or its extension in the code editor used, 
-must be installed beforehand.*
-
-</div>
+must be installed beforehand.
 
 # GUI
 
-<div style="text-align: justify">
 A graphical user interface has been designed together with the coolpi package. The aim is to help especially non-programmers to use 
 in an easy and practical way the functionalities implemented in the coolpi library. Efforts have been made to develop the graphical 
 interface in a way that makes it intuitive and friendly to use. 
 
-To run the coolpi-gui:</div>
+To run the coolpi-gui:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> from coolpi.gui.app import GUI
@@ -135,7 +114,6 @@ To run the coolpi-gui:</div>
 >>> gui.run()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-<div style="text-align: justify">
 The coolpi-gui includes the following tools:
 
 - CSC: Colour Space Conversion
@@ -145,15 +123,12 @@ The coolpi-gui includes the following tools:
 - SPD: Illuminant SPD
 - CCI: ColourChecker Inspector
 - RCIP: RAW Colour Image Processing
-</div>
 
 # Project links
 
-<div style="text-align: justify">
 - [INDIGO project](https://projectindigo.eu)
 - [Ludwig Boltzmann Institut](https://archpro.lbg.ac.at)
 - [GitHub](https://github.com/GraffitiProjectINDIGO/coolpi)
 - [Source](https://github.com/GraffitiProjectINDIGO/coolpi/src"
 - [Coolpi Documentation](https://github.com/GraffitiProjectINDIGO/coolpi/doc)
 - [Jupyter Notebooks](https://github.com/GraffitiProjectINDIGO/coolpi/notebooks)
-</div>
