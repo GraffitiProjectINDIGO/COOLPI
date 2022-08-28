@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "coolpi"
-version = "0.1.11"
+version = "0.1.12"
 authors = [
   { name="Adolfo Molada Tebar", email="admote@doctor.upv.es"}]
 
@@ -36,8 +36,8 @@ namespaces = true
 where = ["src", "data", "assets"]
 
 [project.urls]
-"Coolpi Documentation" ="https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/doc"
-"Coolpi Source" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src"
+"Coolpi Documentation" ="https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/doc/coolpi_api.md"
+"Coolpi Source" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi"
 "GitHub" = "https://github.com/GraffitiProjectINDIGO/coolpi"
 "GitHub Notebooks" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks"
 "INDIGO" = "https://projectindigo.eu"
