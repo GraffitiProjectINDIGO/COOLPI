@@ -131,4 +131,4 @@ The coolpi-gui includes the following tools:
 - [GitHub](https://github.com/GraffitiProjectINDIGO/coolpi)
 - [Source](https://github.com/GraffitiProjectINDIGO/coolpi/src)
 - [Coolpi Documentation](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/doc/coolpi_api.md)
-- [Jupyter Notebooks](https://github.com/GraffitiProjectINDIGO/coolpi/notebooks)
+- [Jupyter Notebooks](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks)
