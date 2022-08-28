@@ -1,4 +1,4 @@
-# Description
+# 1. Description
 
 The Colour Operations Library (coolpy) is an open source toolbox programmed in Python for the treatment of colorimetric
 and spectral data. It includes classes, methods and functions developed and tested following the colorimetric standards 
