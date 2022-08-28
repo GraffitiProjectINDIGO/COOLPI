@@ -25,7 +25,7 @@ The coolpy package is freely available under the [GNU General Public License](ht
 [<img src="md/logo/INDIGO_logo.png" alt="drawing" align = "right" width="150"/>](https://projectindigo.eu/)
 
 
-## Modules
+## 1.1. Modules
 
 The coolpy library is structured in the following oriented objected programming (OOP) modules:
 
