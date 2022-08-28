@@ -125,6 +125,7 @@ The coolpi-gui includes the following tools:
 
 # Project links
 
+- [Coolpi PyPi](https://pypi.org/project/coolpi/)
 - [Coolpi Documentation](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/doc/coolpi_api.md)
 - [GitHub](https://github.com/GraffitiProjectINDIGO/coolpi)
 - [Source](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi)
