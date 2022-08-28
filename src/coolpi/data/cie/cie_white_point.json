@@ -1,0 +1,20 @@
+{
+"Metadata": "CIE015:2018. 11.2. Tables representing the relative spectral power distribution of illuminants and other colorimetric data",
+
+"2 observer": {
+"Metadata": "Table 9.1. Colorimetric data (tristimulus values XYZ, chromaticity coodidinates xy and u'v') for CIE illuminants, computed for the CIE 1935 standard colorimetric observer",
+"A": {"XYZ":[109.85, 100.00, 35.58], "xy": [0.44758, 0.40745], "u'v'":[0.25597, 0.52430]},
+"C": {"XYZ":[98.07, 100.00, 118.22], "xy": [0.31006, 0.31617], "u'v'":[0.20089, 0.46089]},
+"D50": {"XYZ":[98.42, 100.00, 82.51], "xy": [0.34568, 0.35851], "u'v'":[0.20916, 0.48808]},
+"D55": {"XYZ":[95.68, 100.00, 92.14], "xy": [0.33243, 0.34744], "u'v'":[0.20443, 0.48074]},
+"D65": {"XYZ":[95.04, 100.00, 108.88], "xy": [0.31271, 0.32903], "u'v'":[0.19783, 0.46834]},
+"D75": {"XYZ":[94.97, 100.00, 122.61], "xy": [0.29903, 0.31488], "u'v'": [0.19353, 0.45853]}},
+
+"10 observer": {
+"Metadata": "Table 9.2. Colorimetric data (tristimulus values XYZ, chromaticity coodidinates xy and u'v') for CIE illuminants, computed for the CIE 1964 standard colorimetric observer",
+"A": {"XYZ":[111.14, 100.00, 35.20], "xy": [0.45117, 0.40594], "u'v'": [0.25896, 0.52425]},
+"C": {"XYZ":[97.29, 100.00, 116.14], "xy": [0.3104, 0.31905 ], "u'v'": [0.20001, 0.46256]},
+"D50": {"XYZ":[96.72, 100.00, 81.43], "xy": [0.34773, 0.35952], "u'v'": [0.21015, 0.48886]},
+"D55": {"XYZ":[95.80, 100.00, 90.93], "xy": [0.33411, 0.34876], "u'v'": [0.20507, 0.48165]},
+"D65": {"XYZ":[94.81, 100.00, 107.32], "xy": [0.31381, 0.33098], "u'v'":[0.19786, 0.46954]},
+"D75": {"XYZ":[94.42, 100.00, 120.64], "xy": [0.29969, 0.3174], "u'v'": [0.19305,  0.46004]}}}
