@@ -129,6 +129,6 @@ The coolpi-gui includes the following tools:
 - [Ludwig Boltzmann Institut](https://archpro.lbg.ac.at)
 - [GEO Department of TU Wien University](https://www.geo.tuwien.ac.at/)
 - [GitHub](https://github.com/GraffitiProjectINDIGO/coolpi)
-- [Source](https://github.com/GraffitiProjectINDIGO/coolpi/src)
+- [Source](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src)
 - [Coolpi Documentation](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/doc/coolpi_api.md)
 - [Jupyter Notebooks](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks)
