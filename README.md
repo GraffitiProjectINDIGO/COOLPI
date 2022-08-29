@@ -2,13 +2,12 @@
 
 # Description
 
-COlour Operations Library for Processing Images (coolpi) is an open-source toolbox programmed in Python for the treatment of colorimetric
+COlour Operations Library for Processing Images [(coolpi)](https://pypi.org/project/coolpi/) is an open-source toolbox programmed in Python for the treatment of colorimetric
 and spectral data. It includes classes, methods and functions developed and tested following the colorimetric standards 
 published by the Commission Internationale de l'Éclairage [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/).
 
 The coolpi package has been developed as part of the [INDIGO](https://projectindigo.eu/) project (In-ventory and 
-DI-sseminate G-raffiti along the d-O-naukanal) carried out by the [Ludwig Boltzmann Institute](https://archpro.lbg.ac.at/) 
-in close collaboration with the [GEO Department of TU Wien University](https://www.geo.tuwien.ac.at/).
+DI-sseminate G-raffiti along the d-O-naukanal) carried out by the [Ludwig Boltzmann Institute for Archaeological Prospection and Virtual Archaeology](https://archpro.lbg.ac.at/) in close collaboration with the [GEO Department of TU Wien University](https://www.geo.tuwien.ac.at/).
 
 The achievement of colour-accurate digital images is one of the primary research topics within the INDIGO project. 
 Therefore, the coolpi package also includes specific procedures for digital image processing and colour correction, 
@@ -84,15 +83,15 @@ The dependencies should have been installed automatically along with coolpi. Ple
 A series of interactive [Jupyter Notebooks](https://jupyter.org) have been prepared. They include practical examples 
 to help users become familiar with the classes, methods and functions implemented in the coolpi package. 
 
-- 01 CIE objects
-- 02a Colour objects
-- 02b CSC - Colour Space Conversion
-- 02c CSC - Data test (Ohta&Robertson 2005)
-- 03a Spectral objects
-- 04a Colour-difference
-- 04b CIEDE2000 - Test data (Sharma et al., 2005)
-- 05 ColourChecker objects
-- 06 Image objects
+- 01 CIE objects. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/01_CIE_objects.ipynb)
+- 02a Colour objects. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/02a_Colour_objects.ipynb)
+- 02b CSC - Colour Space Conversion. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/02b_CSC_Colour_Space_Conversion.ipynb)
+- 02c CSC - Data test (Ohta&Robertson 2005). [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/02c_CSC_Test_data.ipynb)
+- 03a Spectral objects. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/03a_Spectral_objects.ipynb)
+- 04a Colour-difference. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/04a_Colour-difference.ipynb)
+- 04b CIEDE2000 - Test data (Sharma et al., 2005). [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/04b_CIEDE2000_Test_data.ipynb)
+- 05 ColourChecker objects.[(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/05_ColourChecker_objects.ipynb)
+- 06 Image objects. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/06_Image_objects.ipynb)
 
 Users can find the interative Jupyter Notebooks in the [notebook folder of the coolpi repository on GitHub](https://github.com/GraffitiProjectINDIGO/coolpi/notebooks).
 
@@ -131,5 +130,5 @@ The coolpi-gui includes the following tools:
 - [Source](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi)
 - [Jupyter Notebooks](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks)
 - [INDIGO project](https://projectindigo.eu)
-- [Ludwig Boltzmann Institut](https://archpro.lbg.ac.at)
-- [GEO Department of TU Wien University](https://www.geo.tuwien.ac.at/)
+- [Ludwig Boltzmann Institute for Archaeological Prospection and Virtual Archaeology](https://archpro.lbg.ac.at)
+- [TU Wien University - GEO Department](https://www.geo.tuwien.ac.at/)
