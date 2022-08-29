@@ -2,7 +2,7 @@
 
 # Description
 
-The COlour Operations Library for the Processing of Images (coolpi) is an open-source toolbox programmed in Python for the treatment of colorimetric
+COlour Operations Library for Processing Images (coolpi) is an open-source toolbox programmed in Python for the treatment of colorimetric
 and spectral data. It includes classes, methods and functions developed and tested following the colorimetric standards 
 published by the Commission Internationale de l'Éclairage [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/).
 
