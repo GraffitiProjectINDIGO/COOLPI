@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "coolpi"
-version = "0.1.12"
+version = "0.1.14"
 authors = [
   { name="Adolfo Molada Tebar", email="admote@doctor.upv.es"}]
 
@@ -18,7 +18,7 @@ dependencies = [
   "seaborn>=0.11",
   "matplotlib>=3.5"]
 
-description = "COlour Operations Library for the Processing of Images"
+description = "COlour Operations Library for Processing Images"
 readme = "README.md"
 license = { file="LICENSE" }
 requires-python = ">=3.9"
@@ -36,10 +36,11 @@ namespaces = true
 where = ["src", "data", "assets"]
 
 [project.urls]
-"Coolpi Documentation" ="https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/doc/coolpi_api.md"
+"Coolpi Documentation" ="https://graffitiprojectindigo.github.io/coolpi/"
 "Coolpi Source" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi"
+"Coolpi Tests" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/tests"
 "GitHub" = "https://github.com/GraffitiProjectINDIGO/coolpi"
 "GitHub Notebooks" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks"
 "INDIGO" = "https://projectindigo.eu"
-"Ludwig Boltzmann Institut"= "https://archpro.lbg.ac.at"
+"LBI - ARCHPRO" = "https://archpro.lbg.ac.at"
 "TU Wien - GEO Department"="https://www.geo.tuwien.ac.at/"

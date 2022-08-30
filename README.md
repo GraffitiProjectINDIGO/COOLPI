@@ -2,20 +2,16 @@
 
 # Description
 
-COlour Operations Library for Processing Images [(coolpi)](https://pypi.org/project/coolpi/) is an open-source toolbox programmed in Python for the treatment of colorimetric
-and spectral data. It includes classes, methods and functions developed and tested following the colorimetric standards 
+COlour Operations Library for Processing Images [(coolpi)](https://github.com/GraffitiProjectINDIGO/coolpi) is an open-source toolbox programmed 
+in Python for the treatment of colorimetric and spectral data. It includes classes, methods and functions developed and tested following the colorimetric standards 
 published by the Commission Internationale de l'Éclairage [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/).
 
-The coolpi package has been developed as part of the [INDIGO](https://projectindigo.eu/) project (In-ventory and 
-DI-sseminate G-raffiti along the d-O-naukanal) carried out by the [Ludwig Boltzmann Institute for Archaeological Prospection and Virtual Archaeology](https://archpro.lbg.ac.at/) in close collaboration with the [GEO Department of TU Wien University](https://www.geo.tuwien.ac.at/).
+The coolpi package has been developed as part of the [INDIGO](https://projectindigo.eu/) project (In-ventory and DI-sseminate G-raffiti along the 
+d-O-naukanal) carried out by the [Ludwig Boltzmann Institute for Archaeological Prospection and Virtual Archaeology](https://archpro.lbg.ac.at/) in close collaboration with the [GEO Department of TU Wien University](https://www.geo.tuwien.ac.at/).
 
-The achievement of colour-accurate digital images is one of the primary research topics within the INDIGO project. 
-Therefore, the coolpi package also includes specific procedures for digital image processing and colour correction, 
-particularly from images in RAW format. 
+The achievement of colour-accurate digital images is one of the primary research topics within the INDIGO project. Therefore, the coolpi package also includes specific procedures for digital image processing and colour correction, particularly from images in RAW format. 
 
-Although the coolpi package has been designed mainly for Cultural Heritage documentation applications based on digital 
-imaging techniques, we are confident that its applicability can be extended to any discipline where colour accurate 
-registration is required.
+Although the coolpi package has been designed mainly for Cultural Heritage documentation applications based on digital imaging techniques, we are confident that its applicability can be extended to any discipline where colour accurate registration is required.
 
 # Modules
 
@@ -124,10 +120,11 @@ The coolpi-gui includes the following tools:
 
 # Project links
 
-- [Coolpi PyPi](https://pypi.org/project/coolpi/)
-- [Coolpi Documentation](https://graffitiprojectindigo.github.io)
+- [Coolpi PyPi]()
+- [Coolpi Documentation](https://graffitiprojectindigo.github.io/coolpi/)
 - [GitHub](https://github.com/GraffitiProjectINDIGO/coolpi)
 - [Source](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi)
+- [Tests](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/tests)
 - [Jupyter Notebooks](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks)
 - [INDIGO project](https://projectindigo.eu)
 - [Ludwig Boltzmann Institute for Archaeological Prospection and Virtual Archaeology](https://archpro.lbg.ac.at)
