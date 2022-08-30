@@ -1,4 +1,4 @@
-from coolpy.gui.app import GUI
+from coolpi.gui.app import GUI
 
 gui = GUI()
 gui.run()
