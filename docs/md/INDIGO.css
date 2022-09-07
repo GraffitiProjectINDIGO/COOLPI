@@ -1,0 +1,80 @@
+body#md {
+    font-weight: 500;
+    font-size: 16px;
+    text-align: justify;
+    font-family: Arial, Helvetica, "sans serif";
+    line-height: 160%;
+}
+
+/* reset heading/link fonts to that of body */
+.md a,
+.md div.title, contents, .md .tocHeader,
+.md h1, .md h2, .md h3, .md h4, .md h5, .md h6,
+.md .nonumberh1, .md .nonumberh2, .md .nonumberh3, .md .nonumberh4, .md .nonumberh5, .md .nonumberh6,
+.md .shortTOC, .md .mediumTOC, .md .longTOC {
+    font-family: inherit;
+}
+
+.md div.title, .md div.subtitle {
+    right: 0px;
+    text-align: right;
+    color: black;
+    z-index: 10;
+    margin: 0px;
+    padding-right: 0px;
+    font-weight: 900;
+}
+
+.md h1, .md h2, .md h3, .md h4, .md h5, .md h6 {
+    text-align: left;
+    font-family: Arial, Helvetica, "sans serif";
+    font-weight: 300;
+}
+
+.md div.title {
+    top: 0px;
+    height: 80px;
+    padding-top: 20px;
+    font-size: 21px;
+    background-image: url('./logo/INDIGO_logoCOOLPI.png');
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: contain;
+}
+
+.md .tocHeader {
+    margin-top: 40px;
+    border: none;
+    font-size: 30px;
+    font-family: inherit;
+    font-weight: 900;
+}
+
+.md .longTOC { 
+    display: block;
+    white-space: nowrap;    
+    margin-top: 10px;
+    font-size: 95%;
+    font-family: inherit;
+    font-weight: 200;
+    width: 260px;
+    border-right: 2px solid black;
+    overflow-y:scroll;
+    font-family: inherit;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom:0px;
+    margin: 0px;
+    padding: 0px;
+    padding-left:20px;
+    background-color:  #e1e3e9;
+}
+
+.md .imagecaption, .md div.listingcaption {
+    display: inline;
+}
+
+.shaderCode {
+    background: #f2ecf8;
+}
