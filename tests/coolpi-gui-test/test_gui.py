@@ -1,4 +1,5 @@
-from coolpi.gui.app import GUI
+from coolpy.gui.app import GUI
 
-gui = GUI()
-gui.run()
+if __name__ == '__main__':
+    gui = GUI()
+    gui.run()
