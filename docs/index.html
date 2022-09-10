@@ -8322,7 +8322,7 @@ To get the camera daylight white balance multipliers from `raw_attributes`:
 To compute the wb multipliers using a grey/white patch data from a *ColourCheckerRGB*:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> params = dict(colourchecker_name ="XRCCPP", patch_id="D3")
+>>> params = dict(checker_name ="XRCCPP", patch_id="D3")
 >>> wb_multipliers = raw_image.compute_wb_multipliers(**params)
 >>> print(wb_multipliers)
 [1.205344834215299, 1.0, 2.6013444028839836, 1.0]
