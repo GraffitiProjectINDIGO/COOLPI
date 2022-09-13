@@ -6539,7 +6539,7 @@ Depending on the type of data stored in the *ColourChecker* class, these can be:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 !!! Tip Practical use of *ColourChecker* classes
-    *Users are encouraged to previously take a look at the [Jupyter Notebook](#notebooks):*
+    *Users are encouraged to previously take a look at the [Jupyter Notebooks](#notebooks):*
     
     *`05_ColourChecker_objects.ipynb`*
 
@@ -6555,10 +6555,13 @@ For working with digital images, COOLPI includes the following classes:
 >>> from coolpi.image.image_objects import RawImage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-!!! Tip Practical use of *ColourChecker* classes
-    *Users are encouraged to previously take a look at the [Jupyter Notebook](#notebooks):*
+!!! Tip Practical use of *Image* classes
+    *Users are encouraged to previously take a look at the [Jupyter Notebooks](#notebooks):*
     
     *`06_Image_objects.ipynb`*
+
+    *`07_ColourCheckerRGB_Data_Extraction_From_Images.ipynb`*
+
 
 ## ColourCheckerSpectral
 
@@ -6617,7 +6620,7 @@ The colour charts implemented in the COOLPI package, provided by different manuf
 - QPCARD 202 (QPGQP202).
 - RAL K5 CLASSIC (RALK5).
 - RAL K7 CLASSIC (RALK7).
-- Spyder Checker (SCK100).
+- SpyderCHECKR(SCK100).
 - X-Rite PASSPORT PHOTO (XRCCPP). 
 - X-Rite Digital SG (XRCCSG).
 
@@ -7964,8 +7967,10 @@ ColourCheckerRGB object: XRCCPP
    *&ensp;&ensp;.get_raw_single_channel_from_metadata()*
    
    *&ensp;&ensp;.extract_rgb_patch_data_from_image(center, size)*
+
+   *&ensp;&ensp;.automatic_colourchecker_extraction(checker_name, opencv_descriptor)*
    
-   *&ensp;&ensp;.extract_colourchecker_rgb_patches(checker_name, corners_image, size_rect)*
+   *&ensp;&ensp;.extract_colourchecker_rgb_patches(checker_name, corners, size_rect)*
 
    *&ensp;&ensp;.get_ColourCheckerRGB(checker_name)*
    
@@ -8025,9 +8030,10 @@ ColourCheckerRGB object: XRCCPP
 To <span style="color:blue">*create an instance*</span> of the *RawImage* class, simply enter the required parameters as follows:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
+>>> path_raw # your path here
 >>> metadata = {"Camera": "Nikon D5600", "image_size":[4008, 6008], 
-    "Date": [[2022, 6, 19], [8, 29, 00]], "ColorChecker": "XRCCPP", 
-    "illuminant":JNA, "observer": 2}
+    "Date": [[2022, 6, 19], [8, 29, 00]], "ColorChecker": "CCPP2", 
+    "illuminant":JND65, "observer": 2} # optional
 >>> raw_image = RawImage(path_raw, metadata, method = "postprocess")
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -8065,19 +8071,19 @@ Image object
 >>> print(raw_image.subtype)
 RAW Image object
 >>> print(raw_image.path)
-res/img/INDIGO_2022-06-19_NikonD5600_0017.NEF
+res/img/INDIGO_2022-06-19_NikonD5600_0003.NEF
 >>> print(raw_image.raw_attributes.keys()) # same as .get_raw_image_information() 
 dict_keys(['black_level_per_channel', 'camera_whitebalance', 'colour_desc', 
-'daylight_whitebalance', 'num_colours', 'raw_colours', 'raw_image', 'raw_image_visible', 
-'raw_pattern', 'xyz_cam_matrix', 'tone_curve', 'white_level', 'raw_image_size', 
-'processed_image_size'])
+'daylight_whitebalance', 'num_colours', 'raw_colours', 'raw_image', 
+'raw_image_visible', 'raw_pattern', 'xyz_cam_matrix', 'tone_curve', 
+'white_level', 'raw_image_size', 'processed_image_size'])
 >>> print(raw_image.rgb_data.shape)
 (4008, 6008, 3)
 >>> print(raw_image.metadata)
 {'Camera': 'Nikon D5600', 'image_size': [4008, 6008], 'Date': [[2022, 6, 19], [8, 29, 0]], 
-'ColorChecker': 'XRCCPP', 'illuminant': JNA, 'observer': 2}
+'ColorChecker': 'CCPP2', 'illuminant': JND65, 'observer': 2}
 >>> print(raw_image.illuminant)
-MeasuredIlluminant object: Illuminant JNA.
+MeasuredIlluminant object: Illuminant JND65
 >>> print(raw_image.observer)
 2º standard observer (CIE 1931)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -8125,7 +8131,7 @@ However, custom parameters can be introduced as optional `krawargs`, e.g. to app
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> krawargs = dict(use_camera_wb=False, use_auto_wb=False, 
-    user_wb=[1.21, 1.0, 2.60, 1.0], output_bps=16)
+    user_wb=[2.3, 1.0, 1.21, 1.0], output_bps=16)
 >>> rgb_processed_custom = raw_image.automatic_image_processing(show_image = True, 
     save_image = False, output_path = None, method="matplotlib", **krawargs)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -8153,29 +8159,77 @@ However, custom parameters can be introduced as optional `krawargs`, e.g. to app
 To extract the RGB data of a single patch from the image:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> r_grey, g_grey, b_grey = raw_image.extract_rgb_patch_data_from_image([2469,3490], 70) # "F1"
+>>> r_grey, g_grey, b_grey = raw_image.extract_rgb_patch_data_from_image([2479,3471], 
+    70) # "F1"
 >>> print(r_grey, g_grey, b_grey)
-1780.4232653061224 2112.1951020408164 801.9648979591836
+1738.9681632653062 3919.920408163265 3218.115918367347
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-!!! Attention *RawImage.extract_colourchecker_rgb_patches(checker_name, corners_image, size_rect=40)*
+!!! Attention *RawImage.automatic_colourchecker_extraction(checker_name="XRCCPP_24", opencv_descriptor="SIFT")*
+    *Method to extract the RGB data of a colour checker from an image using OpenCV.*
+
+    *OpenCV descriptors: "SIFT", "SURF", "ORB".*
+    
+    *Parameters:*
+
+    *&ensp;&ensp;checker_name:&ensp;&ensp;`str`&ensp;&ensp; Colour checker name. Default: "XRCCPP_24".*
+
+    *&ensp;&ensp;opencv_descriptor:&ensp;&ensp;`str`&ensp;&ensp;OpenCV descriptor. Default: "SIFT".*
+
+    *Returns:*
+
+    *&ensp;&ensp;has_colourchecker:&ensp;&ensp;`bool`&ensp;&ensp; True if the image has the input colour cheker.*
+    
+    *&ensp;&ensp;corners:&ensp;&ensp;`dict`&ensp;&ensp; Colour checker corners.*
+
+    *&ensp;&ensp;size_rect:&ensp;&ensp;`int`&ensp;&ensp; Patch size.*
+
+Automatic ColourcheckerRGB Extraction have been implemented for the following colour checkers:
+
+    - <div style="text-align: justify"> Calibrite CLASSIC: "CCC".</div>
+    - <div style="text-align: justify"> Calibrite colorchecker DIGITAL SG: "CCDSG".</div>
+    - <div style="text-align: justify"> Calibrite PASSPORT PHOTO 2: "CCPP2_24", "CCPP2_26".</div>
+    - <div style="text-align: justify"> Calibrite PASSPORT VIDEO: "CCPPV_24", "CCPPV_3".</div>
+    - <div style="text-align: justify"> SpyderCHECKR: "SCK100_48".</div>
+    - <div style="text-align: justify"> X-rite PASSPORT PHOTO: "XRCCPP_24", "XRCCPP_26".</div>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
+>>> has_colourchecker, corners, size_rect = 
+    raw_image.automatic_colourchecker_extraction("CCPP2_24")
+>>> print(has_colourchecker, corners, size_rect)
+True 
+{'TopLeft': [3360, 3660], 'TopRight': [3366, 2431], 
+'BottomRight': [4189, 2425], 'BottomLeft': [4181, 3658]} 
+30
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+![Figure [md]: *RawImage* showing the colour checker patches (enhanced image)](md/img/raw_rgb_colourckecker_auto.jpg | width=500)
+
+!!! Tip Practical use of *ColourChecker* classes
+    *Users are encouraged to take a look at the [Jupyter Notebook](#notebooks):*
+    
+    *`07_ColourCheckerRGB_Data_Extraction_From_Images.ipynb`*
+
+!!! Attention *RawImage.extract_colourchecker_rgb_patches(checker_name, corners, size_rect=40)*
     *Method to extract the RGB data of a colour checker from an image.*
     
     *Parameters:*
 
     *&ensp;&ensp;checker_name:&ensp;&ensp;`str`&ensp;&ensp; Colour checker name.*
 
-    *&ensp;&ensp;corners_image:&ensp;&ensp;`dict`&ensp;&ensp; Colour checker corner coordinates as {"TopLeft":[x,y], "TopRight":[x,y], "BottomRight":[x,y], "BottomLeft":[x,y]}.*
+    *&ensp;&ensp;corners:&ensp;&ensp;`dict`&ensp;&ensp; Colour checker corner coordinates as {"TopLeft":[x,y], "TopRight":[x,y], "BottomRight":[x,y], "BottomLeft":[x,y]}.*
 
     *&ensp;&ensp;size_rect:&ensp;&ensp;`int`&ensp;&ensp;Size in px. Default: 40.*
 
 The following colour checkers have been implemented:
 
+- <div style="text-align: justify"> Calibrite CLASSIC: "CCC".</div>
+- <div style="text-align: justify"> Calibrite colorchecker DIGITAL SG: "CCDSG".</div>
 - <div style="text-align: justify"> Calibrite PASSPORT PHOTO 2: "CCPP2_24", "CCPP2_26".</div>
 - <div style="text-align: justify"> Calibrite PASSPORT VIDEO: "CCPPV_24", "CCPPV_3".</div>
 - <div style="text-align: justify"> Munsell Soil Color Book (Ed.1994): Colour checker name and page, e.g. "MSCB1994_GLEY1", "MSCB1994_5Y".</div>
 - <div style="text-align: justify"> Munsell Soil Color Book (Ed.2009): Colour checker name and page, e.g. "MSCB2009_GLEY1", "MSCB2009_GLEY2".</div>
-- <div style="text-align: justify"> Spyder Checker: "SCK100_48", "SCK100_7".</div>
+- <div style="text-align: justify"> SpyderCHECKR: "SCK100_48", "SCK100_7".</div>
 - <div style="text-align: justify"> X-rite PASSPORT PHOTO: "XRCCPP_24", "XRCCPP_26".</div>
 
 Some of the colour checkers available in COOLPI have been separated into smaller sections (either because of their shape, 
@@ -8190,10 +8244,11 @@ For the Munsell Book, the corners to be entered will be the boundaries of the pa
 To extract the 24 colour patches from the XRCCPP colour checker:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> colourchecker_name = "XRCCPP_24"
->>> corners = {"TopLeft":[3342.76,3680.96], "TopRight":[3345.91,2441.74],
-    "BottomRight":[4162.87,2433.49], "BottomLeft":[4156.83,3669.2]}
->>> raw_image.extract_colourchecker_rgb_patches(checker_name=colourchecker_name, corners_image=corners, size_rect=70)
+>>> colourchecker_name = "CCPP2_24"
+>>> corners = {"TopLeft":[3365.1,3654.09], "TopRight":[3367.69,2424.38], 
+    "BottomRight":[4189.98,2421.04], "BottomLeft":[4189.98,3654.09]}
+>>> raw_image.extract_colourchecker_rgb_patches(checker_name=colourchecker_name, 
+    corners=corners, size_rect=70)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ![Figure [md]: *RawImage* showing the colour checker patches (enhanced image)](md/img/raw_rgb_colourckecker_24.jpg | width=500)
@@ -8212,7 +8267,7 @@ To extract the 24 colour patches from the XRCCPP colour checker:
 To get a *ColourCheckerRGB* (it must have been extracted from the image beforehand):
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> colourchecker = raw_image.get_ColourCheckerRGB("XRCCPP")
+>>> colourchecker = raw_image.get_ColourCheckerRGB("CCPP2")
 >>> type(colourchecker)
 coolpi.image.colourchecker.ColourCheckerRGB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -8225,12 +8280,12 @@ ColourChecker object
 >>> print(colourchecker.subtype)
 ColourChecker RGB data
 >>> print(colourchecker.name)
-XRCCPP
+CCPP2
 >>> print(colourchecker.illuminant)
-MeasuredIlluminant object: Illuminant JNA.
+MeasuredIlluminant object: Illuminant JND65.
 >>> print(colourchecker.observer)
 2º standard observer (CIE 1931)
->>> #print(XRCCPP_RGB.patches) # RGB data as dict
+>>> #print(colourchecker.patches) # RGB data as dict
 >>> print(colourchecker.patches_id)
 dict_keys(['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 
 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6'])
@@ -8254,18 +8309,18 @@ dict_keys(['Camera', 'image_size', 'Date', 'ColorChecker', 'illuminant', 'observ
 To get the RGB data of a given patch from a *ColourCheckerRGB*:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> raw_image.get_patch_from_colourchecker("XRCCPP", "D3")
-(1242.0461224489795, 1497.0938775510203, 575.5077551020408)
+>>> raw_image.get_patch_from_colourchecker("CCPP2", "D3")
+(1132.4, 2599.4222222222224, 2152.92)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In case of introducing a colour checker name or patch which is not in the image, a `ColourCheckerError` 
 or a `PatchError` is raised.  
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>>raw_image.get_patch_from_colourchecker("XRCCP", "P1")
-ColourCheckerError: ColourChecker not present on image: dict_keys(['XRCCPP'])
->>>raw_image.get_patch_from_colourchecker("XRCCPP", "P1")
-PatchError: Patch id not present in the ColourChecker XRCCPP
+>>> raw_image.get_patch_from_colourchecker("CP2", "D3")
+ColourCheckerError: ColourChecker not present on image: dict_keys(['CCPP2'])
+>>> raw_image.get_patch_from_colourchecker("CCPP2", "P1")
+PatchError: Patch id not present in the ColourChecker CCPP2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <span style="color:blue">**White Balance multipliers:**</span>
@@ -8305,7 +8360,7 @@ To get the camera daylight white balance multipliers from `raw_attributes`:
 
     *To compute the wb multipliers from a patch of a ColourCheckerRGB extracted from image use:*
 
-    *&ensp;&ensp;`params` = dict(colourchecker_name=str, patch_id=str)*
+    *&ensp;&ensp;`params` = dict(checker_name=str, patch_id=str)*
 
     *To compute the wb multipliers from r,g,b values use:*
 
@@ -8322,20 +8377,20 @@ To get the camera daylight white balance multipliers from `raw_attributes`:
 To compute the wb multipliers using a grey/white patch data from a *ColourCheckerRGB*:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> params = dict(checker_name ="XRCCPP", patch_id="D3")
+>>> params = dict(checker_name ="CCPP2", patch_id="D3")
 >>> wb_multipliers = raw_image.compute_wb_multipliers(**params)
 >>> print(wb_multipliers)
-[1.205344834215299, 1.0, 2.6013444028839836, 1.0]
+[2.2954982534636366, 1.0, 1.2073937825010788, 1.0]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To compute the wb multipliers using the rgb patch data:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> F1 = raw_image.extract_rgb_patch_data_from_image([2469,3490], 70) # "F1"
+>>> F1 = raw_image.extract_rgb_patch_data_from_image([2479,3471], 70) # "F1"
 >>> params = dict(patch_rgb=F1)
 >>> wb_multipliers = raw_image.compute_wb_multipliers(**params)
 >>> print(wb_multipliers)
-[1.1863443615906974, 1.0, 2.6337750036390215, 1.0]
+[2.2531589116386384, 1.0, 1.2181012836660643, 1.0]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 !!! Attention *RawImage.estimate_wb_multipliers(method, `**params`)*
@@ -8372,17 +8427,17 @@ To estimate the wb multipliers of the image using a white balance algorithm:
     corners_colourchecker=None) # "Average", "GreyWorld", "MaxWhite", "Retinex"
 >>> wb_multipliers = raw_image.estimate_wb_multipliers(method="wb_algorithm", **params)
 >>> print(wb_multipliers)
-[1.1817885097403635, 1.0, 2.613837972697569, 1.0]
+[2.236124880669442, 1.0, 1.2206659779846136, 1.0]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 It is possible to remove a *ColourCheckerRGB* from the image to estimate the wb multipliers as follows:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> params = dict(algorithm="GreyWorld", remove_colourckecker=True, 
-    corners_colourchecker= {"TopLeft":[1903,2120], "BottomRight":[4357,3940]})
+corners_colourchecker= {"TopLeft":[1995.22,2166.7], "BottomRight":[4358.66,3907.57]})
 >>> wb_multipliers = raw_image.estimate_wb_multipliers(method="wb_algorithm", **params)
 >>> print(wb_multipliers)
-[1.1851094404443938, 1.0, 2.6137520731738633, 1.0]
+[2.241192867357791, 1.0, 1.2202441768805277, 1.0]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To estimate the wb multipliers of the image from the illuminant:
@@ -8390,7 +8445,7 @@ To estimate the wb multipliers of the image from the illuminant:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> wb_multipliers = raw_image.estimate_wb_multipliers(method="illuminant")
 >>> print(wb_multipliers)
-[1.2151604453345477, 1.0, 2.8910047176851696, 1.0]
+[2.2888870232621676, 1.0, 1.2369238235156481, 1.0]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If the *RawImage* object doesnot have an RGB to XYZ colour transformation matrix assigned, the camera embedded matrix is used 
@@ -8412,7 +8467,7 @@ Then, it is possible to compute the wb multipliers as follows:
 >>> params = dict(use_transform_matrix="computed")
 >>> wb_multipliers = raw_image.estimate_wb_multipliers(method="illuminant", **params)
 >>> print(wb_multipliers)
-[1.1809646428091218, 1.0, 2.6040767044506463, 1.0]
+[2.234565998239866, 1.0, 1.2161074521021915, 1.0]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 !!! Attention *RawImage.set_whitebalance_multipliers(wb_multipliers)*
@@ -8429,7 +8484,7 @@ To set the white balance multipliers of an image:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> raw_image.set_whitebalance_multipliers(wb_multipliers = 
-    [1.205344834215299, 1.0, 2.6013444028839836, 1.0])
+    [2.2954982534636366, 1.0, 1.2073937825010788, 1.0])
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 !!! Attention *RawImage.get_whitebalance_multipliers()*
@@ -8444,7 +8499,7 @@ To get the white balance multipliers of an image:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> wb_multipliers = raw_image.get_whitebalance_multipliers()
 >>> print(wb_multipliers)
-[1.205344834215299, 1.0, 2.6013444028839836, 1.0]
+[2.2954982534636366, 1.0, 1.2073937825010788, 1.0]
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <span style="color:blue">**White Balanced Image:**</span>
@@ -8540,7 +8595,7 @@ In addition, the wb multipliers must have been specified beforehand.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> raw_image.set_whitebalance_multipliers(wb_multipliers = 
-    [1.205344834215299, 1.0, 2.6013444028839836, 1.0])
+    [2.2954982534636366, 1.0, 1.2073937825010788, 1.0])
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once the transformation matrix has been entered, the colour-corrected image can be obtained as follows:
@@ -8593,10 +8648,11 @@ matrix set to the *RawImage* object.
 To compute the image colour quality assessment:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> colourchecker_metrics = raw_image.compute_image_colour_quality_assessment(colourchecker_name="XRCCPP")
+>>> colourchecker_metrics = raw_image.compute_image_colour_quality_assessment(
+    colourchecker_name="CCPP2")
 >>> #colourchecker_metrics.describe() # basic stats
 >>> colourchecker_metrics["CIEDE2000"].mean()
-4.500208139893018
+2.6512719632838757
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The computed CIE XYZ data shall be compared with the CIE XYZ measured with colorimetric instruments as reference 
@@ -8604,11 +8660,12 @@ The computed CIE XYZ data shall be compared with the CIE XYZ measured with color
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> from coolpi.image.image_objects import ColourCheckerSpectral
->>> XRCCPP = ColourCheckerSpectral("XRCCPP")
->>> colourchecker_metrics = raw_image.compute_image_colour_quality_assessment(checker_name="XRCCPP", 
-    data = XRCCPP_XYZ)
+>>> CCPP2 = ColourCheckerSpectral("CCPP2")
+>>> CCPP2_XYZ = CCPP2.to_ColourCheckerXYZ()
+>>> colourchecker_metrics = raw_image.compute_image_colour_quality_assessment(
+    checker_name="CCPP2", data = CCPP2_XYZ)
 >>> colourchecker_metrics["CIEDE2000"].mean()
-4.500208139893018
+2.6512719632838757
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <span style="color:blue">**`__str__`:**</span>
@@ -8619,12 +8676,12 @@ The computed CIE XYZ data shall be compared with the CIE XYZ measured with color
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> print(raw_image) # str method
-RawImage object from path: res/img/INDIGO_2022-06-19_NikonD5600_0017.NEF
+RawImage object from path: res/img/INDIGO_2022-06-19_NikonD5600_0003.NEF
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ### Plot
 
-!!! Attention *RawImage.plot_rgb_histogram(show_figure=True, save_figure=False, output_path=None, split_per_channel=False)*
+!!! Attention *RawImage.plot_rgb_histogram(show_figure = True, save_figure = False, output_path = None, split_per_channel = False)*
     *Method to create and display the RGB Histogram using Matplotlib.*
 
     *Parameters:*
@@ -8662,7 +8719,7 @@ In addition, it is posible to save the figure setting `True` the opcion `save_fi
 
 ### Show
 
-!!! Attention *RawImage.show_colourchecker(checker_name, parameters_draw=None, show_image=True, method="OpenCV", save_image=False, output_path=None, bits=16)*
+!!! Attention *RawImage.show_colourchecker(checker_name, parameters_draw = None, show_image = True, method = "OpenCV", save_image = False, output_path = None, bits = 16)*
     
     *Method to show the patches of a ColourCheckerRGB extracted from the image using OpenCV tools.*
 
@@ -8749,7 +8806,9 @@ simply enter the required parameters as follows:
    
    *&ensp;&ensp;.extract_rgb_patch_data_from_image(center, size)*
    
-   *&ensp;&ensp;.extract_colourchecker_rgb_patches(checker_name, corners_image, size_rect)*
+   *&ensp;&ensp;.automatic_colourchecker_extraction(checker_name, opencv_descriptor)*
+
+   *&ensp;&ensp;.extract_colourchecker_rgb_patches(checker_name, corners, size_rect)*
 
    *&ensp;&ensp;.get_ColourCheckerRGB(checker_name)*
    
@@ -8781,8 +8840,9 @@ simply enter the required parameters as follows:
 To <span style="color:blue">*create an instance*</span> of the *ProcessedImage* class, simply enter the required parameters as follows:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
+>>> path_tif # your path here
 >>> metadata = {"Camera": "Nikon D5600", "Date": [[2022, 6, 19], [8, 29, 00]], 
-    "ColorChecker": "XRCCPP", "illuminant":JNA, "observer": 2}
+    "ColorChecker": "CCPP2", "illuminant":JND65, "observer": 2}
 >>> processed_image = ProcessedImage(path_img = path_tif, rgb_data=None, 
     metadata=metadata)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -8813,9 +8873,9 @@ res/img/custom_image_processing_wb_16bits.tif
 (4016, 6016, 3)
 >>> print(processed_image.metadata)
 {'Camera': 'Nikon D5600', 'Date': [[2022, 6, 19], [8, 29, 0]], 
-'ColorChecker': 'XRCCPP', 'illuminant':JNA, 'observer': 2}
+'ColorChecker': 'CCPP2', 'illuminant':JND65, 'observer': 2}
 >>> print(processed_image.illuminant)
-MeasuredIlluminant object: Illuminant JNA.
+MeasuredIlluminant object: Illuminant JND65.
 >>> print(processed_image.observer)
 2º standard observer (CIE 1931)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -8840,29 +8900,77 @@ MeasuredIlluminant object: Illuminant JNA.
 To extract the RGB data of a single patch from the image:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> r_grey, g_grey, b_grey = processed_image.extract_rgb_patch_data_from_image([2469,3490], 70) # "F1"
+>>> r_grey, g_grey, b_grey = processed_image.extract_rgb_patch_data_from_image([2479,3471], 70) # "F1"
 >>> print(r_grey, g_grey, b_grey)
-57463.82326530612 56555.61612244898 55993.384081632656 # 16 bits
+56300.83489795918 55352.14408163265 55156.27530612245 # 16 bits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-!!! Attention *ProcessedImage.extract_colourchecker_rgb_patches(checker_name, corners_image, size_rect=40)*
+!!! Attention *ProcessedImage.automatic_colourchecker_extraction(checker_name = "XRCCPP_24", opencv_descriptor = "SIFT")*
+    *Method to extract the RGB data of a colour checker from an image using OpenCV.*
+
+    *OpenCV descriptors: "SIFT", "SURF", "ORB".*
+    
+    *Parameters:*
+
+    *&ensp;&ensp;checker_name:&ensp;&ensp;`str`&ensp;&ensp; Colour checker name. Default: "XRCCPP_24".*
+
+    *&ensp;&ensp;opencv_descriptor:&ensp;&ensp;`str`&ensp;&ensp;OpenCV descriptor. Default: "SIFT".*
+
+    *Returns:*
+
+    *&ensp;&ensp;has_colourchecker:&ensp;&ensp;`bool`&ensp;&ensp; True if the image has the input colour cheker.*
+    
+    *&ensp;&ensp;corners:&ensp;&ensp;`dict`&ensp;&ensp; Colour checker corners.*
+
+    *&ensp;&ensp;size_rect:&ensp;&ensp;`int`&ensp;&ensp; Patch size.*
+
+Automatic ColourcheckerRGB Extraction have been implemented for the following colour checkers:
+
+    - <div style="text-align: justify"> Calibrite CLASSIC: "CCC".</div>
+    - <div style="text-align: justify"> Calibrite colorchecker DIGITAL SG: "CCDSG".</div>
+    - <div style="text-align: justify"> Calibrite PASSPORT PHOTO 2: "CCPP2_24", "CCPP2_26".</div>
+    - <div style="text-align: justify"> Calibrite PASSPORT VIDEO: "CCPPV_24", "CCPPV_3".</div>
+    - <div style="text-align: justify"> SpyderCHECKR: "SCK100_48".</div>
+    - <div style="text-align: justify"> X-rite PASSPORT PHOTO: "XRCCPP_24", "XRCCPP_26".</div>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
+>>> has_colourchecker, corners, size_rect = processed_image.automatic_colourchecker_extraction(
+    "CCPP2_24")
+>>> print(has_colourchecker, corners_image, size_rect)
+True 
+{'TopLeft': [3359, 3660], 'TopRight': [3366, 2429], 
+'BottomRight': [4191, 2422], 'BottomLeft': [4181, 3658]} 
+30
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+![Figure [md]: *ProcessedImage* showing the colour checker patches (enhanced image)](md/img/processed_rgb_colourckecker_auto.jpg | width=500)
+
+!!! Tip Practical use of *ColourChecker* classes
+    *Users are encouraged to take a look at the [Jupyter Notebook](#notebooks):*
+    
+    *`07_ColourCheckerRGB_Data_Extraction_From_Images.ipynb`*
+
+
+!!! Attention *ProcessedImage.extract_colourchecker_rgb_patches(checker_name, corners, size_rect=40)*
     *Method to extract the RGB data of a colour checker from an image.*
     
     *Parameters:*
 
     *&ensp;&ensp;checker_name:&ensp;&ensp;`str`&ensp;&ensp; Colour checker name.*
 
-    *&ensp;&ensp;corners_image:&ensp;&ensp;`dict`&ensp;&ensp; Colour checker corner coordinates as {"TopLeft":[x,y], "TopRight":[x,y], "BottomRight":[x,y], "BottomLeft":[x,y]}.*
+    *&ensp;&ensp;corners:&ensp;&ensp;`dict`&ensp;&ensp; Colour checker corner coordinates as {"TopLeft":[x,y], "TopRight":[x,y], "BottomRight":[x,y], "BottomLeft":[x,y]}.*
 
     *&ensp;&ensp;size_rect:&ensp;&ensp;`int`&ensp;&ensp;Size in px. Default: 40.*
 
 The following colour checkers have been implemented:
 
+- <div style="text-align: justify"> Calibrite CLASSIC: "CCC".</div>
+- <div style="text-align: justify"> Calibrite colorchecker DIGITAL SG: "CCDSG".</div>
 - <div style="text-align: justify"> Calibrite PASSPORT PHOTO 2: "CCPP2_24", "CCPP2_26".</div>
 - <div style="text-align: justify"> Calibrite PASSPORT VIDEO: "CCPPV_24", "CCPPV_3".</div>
 - <div style="text-align: justify"> Munsell Soil Color Book (Ed.1994): Colour checker name and page, e.g. "MSCB1994_GLEY1", "MSCB1994_5Y".</div>
 - <div style="text-align: justify"> Munsell Soil Color Book (Ed.2009): Colour checker name and page, e.g. "MSCB2009_GLEY1", "MSCB2009_GLEY2".</div>
-- <div style="text-align: justify"> Spyder Checker: "SCK100_48", "SCK100_7".</div>
+- <div style="text-align: justify"> SpyderCHECKR: "SCK100_48", "SCK100_7".</div>
 - <div style="text-align: justify"> X-rite PASSPORT PHOTO: "XRCCPP_24", "XRCCPP_26".</div>
     
 Some of the colour checkers available in COOLPI have been separated into smaller sections (either because of their shape, 
@@ -8877,10 +8985,11 @@ For the Munsell Book, the corners to be entered will be the boundaries of the pa
 To extract the 24 colour patches from the XRCCPP colour checker:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> colourchecker_name = "XRCCPP_24"
->>> corners = {"TopLeft":[3342.76,3680.96], "TopRight":[3345.91,2441.74],
-    "BottomRight":[4162.87,2433.49], "BottomLeft":[4156.83,3669.2]}
->>> raw_image.extract_colourchecker_rgb_patches(checker_name=colourchecker_name, corners_image=corners, size_rect=70)
+>>> colourchecker_name = "CCPP2_24"
+>>> corners = {"TopLeft":[3365.1,3654.09], "TopRight":[3367.69,2424.38], 
+    "BottomRight":[4189.98,2421.04], "BottomLeft":[4189.98,3654.09]}
+>>> processed_image.extract_colourchecker_rgb_patches(checker_name=colourchecker_name, 
+    corners=corners, size_rect=70)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ![Figure [md]: *ProcessedImage* showing the colour checker patches](md/img/processed_rgb_colourckecker_24.jpg | width=500)
@@ -8899,7 +9008,7 @@ To extract the 24 colour patches from the XRCCPP colour checker:
 To get a *ColourCheckerRGB* (it must have been extracted from the image beforehand):
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> colourchecker = processed_image.get_ColourCheckerRGB("XRCCPP")
+>>> colourchecker = processed_image.get_ColourCheckerRGB("CCPP2")
 >>> type(colourchecker)
 coolpi.image.colourchecker.ColourCheckerRGB
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -8912,12 +9021,12 @@ ColourChecker object
 >>> print(colourchecker.subtype)
 ColourChecker RGB data
 >>> print(colourchecker.name)
-XRCCPP
+CCPP2
 >>> print(colourchecker.illuminant)
-MeasuredIlluminant object: Illuminant JNA.
+MeasuredIlluminant object: Illuminant JND65.
 >>> print(colourchecker.observer)
 2º standard observer (CIE 1931)
->>> #print(XRCCPP_RGB.patches) # RGB data as dict
+>>> #print(colourchecker.patches) # RGB data as dict
 >>> print(colourchecker.patches_id)
 dict_keys(['A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 
 'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6'])
@@ -8941,18 +9050,19 @@ dict_keys(['Camera', 'Date', 'ColorChecker', 'illuminant', 'observer'])
 To get the RGB data of a given patch from a *ColourCheckerRGB*:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> processed_image.get_patch_from_colourchecker("XRCCPP", "D3")
-(47612.109591836735, 47455.98775510204, 47447.257755102044) # 16 bits
+>>> r, g, b = processed_image.get_patch_from_colourchecker("CCPP2", "D3")
+>>> print(r,g,b)
+44952.4012244898 44917.553469387756 45023.63081632653 # 16 bits
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In case of introducing a colour checker name or patch which is not in the image, a `ColourCheckerError` 
 or a `PatchError` is raised.  
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>>processed_image.get_patch_from_colourchecker("XRCCP", "P1")
-ColourCheckerError: ColourChecker not present on image: dict_keys(['XRCCPP'])
->>>processed_image.get_patch_from_colourchecker("XRCCPP", "P1")
-PatchError: Patch id not present in the ColourChecker XRCCPP
+>>> processed_image.get_patch_from_colourchecker("CP2", "D3")
+ColourCheckerError: ColourChecker not present on image: dict_keys(['CCPP2'])
+>>> processed_image.get_patch_from_colourchecker("CCPP2", "P1")
+PatchError: Patch id not present in the ColourChecker CCPP"
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 <span style="color:blue">**`__str__`:**</span>
@@ -8968,7 +9078,7 @@ ProcessedImage object from path: res/img/custom_image_processing_wb_16bits.tif
 
 ### Plot
 
-!!! Attention *ProcessedImage.plot_rgb_histogram(show_figure=True, save_figure=False, output_path=None, split_per_channel=False)*
+!!! Attention *ProcessedImage.plot_rgb_histogram(show_figure = True, save_figure = False, output_path = None, split_per_channel = False)*
     *Method to create and display the RGB Histogram using Matplotlib.*
 
     *Parameters:*
@@ -9007,7 +9117,7 @@ In addition, it is posible to save the figure setting `True` the opcion `save_fi
 
 ### Show
 
-!!! Attention *ProcessedImage.show_colourchecker(checker_name, parameters_draw=None, show_image = True, method ="OpenCV", save_image = False, output_path = None, bits=16)*
+!!! Attention *ProcessedImage.show_colourchecker(checker_name, parameters_draw = None, show_image = True, method = "OpenCV", save_image = False, output_path = None, bits = 16)*
     
     *Method to show the patches of a ColourCheckerRGB extracted from the image using OpenCV tools.*
 
@@ -9031,13 +9141,15 @@ on a new image as a visual aid to check the process.
 To show the *ColourcheckerRGB*:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> processed_image.show_colourchecker("XRCCPP", show_image=True, method="matplotlib")
+>>> processed_image.show_colourchecker("CCPP2", show_image=True, 
+    method="matplotlib")
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
->>> processed_image.show_colourchecker("XRCCPP", show_image=False, save_image=True, output_path=path_out, bits=16)
+>>> processed_image.show_colourchecker("CCPP2", show_image=False, 
+    save_image=True, output_path=path_out, bits=16)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ![Figure [md]: *ProcessedImage* showing the colour checker patches](md/img/processed_rgb_colourckecker_24.jpg | width=500)
@@ -9089,6 +9201,7 @@ to help users become familiar with the classes, methods and functions implemente
 - [04b CIEDE2000 - Test data (Sharma et al., 2005)](#CIEDE2000). [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/04b_CIEDE2000_Test_data.ipynb)
 - [05 ColourChecker objects](#ColourCheckerSpectral).[(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/05_ColourChecker_objects.ipynb)
 - [06 Image objects](#RawImage). [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/06_Image_objects.ipynb)
+- [07 ColourCheckerRGB Data Extraction From Images](#RawImage). [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/07_ColourCheckerRGB_data_extraction_from_images.ipynb)
 
 !!! Tip Info
     *Users can find the interative Jupyter Notebooks in the notebook folder of the [COOLPI repository on GitHub](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks).*
@@ -9275,7 +9388,7 @@ The following ColourCheckers have been implemented in the coolpi-gui:
 - QPCARD 202 (QPGQP202).
 - RAL K5 CLASSIC (RALK5).
 - RAL K7 CLASSIC (RALK7).
-- Spyder Checker (SCK100).
+- SpyderCHECKR (SCK100).
 - X-Rite PASSPORT PHOTO (XRCCPP). 
 - X-Rite Digital SG (XRCCSG).
 
