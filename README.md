@@ -88,6 +88,7 @@ to help users become familiar with the classes, methods and functions implemente
 - 04b CIEDE2000 - Test data (Sharma et al., 2005). [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/04b_CIEDE2000_Test_data.ipynb)
 - 05 ColourChecker objects.[(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/05_ColourChecker_objects.ipynb)
 - 06 Image objects. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/06_Image_objects.ipynb)
+- 07 ColourCheckerRGB Data Extraction from Images [GitHub](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/07_ColourCheckerRGB_data_extraction_from_images.ipynb)
 
 Users can find the interative Jupyter Notebooks in the [notebook folder of the COOLPI repository on GitHub](https://github.com/GraffitiProjectINDIGO/coolpi/notebooks).
 
