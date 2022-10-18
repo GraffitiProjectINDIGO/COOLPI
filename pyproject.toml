@@ -4,9 +4,9 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "coolpi"
-version = "0.1.14"
+version = "0.1.16"
 authors = [
-  { name="Adolfo Molada Tebar", email="admote@doctor.upv.es"}]
+  { name="Adolfo Molada Tebar", email="a.molada.tebar@gmail.com"}]
 
 dependencies = [
   "numpy>=1.22", 
@@ -36,11 +36,11 @@ namespaces = true
 where = ["src", "data", "assets"]
 
 [project.urls]
-"Coolpi Documentation" ="https://graffitiprojectindigo.github.io/coolpi/"
-"Coolpi Source" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi"
-"Coolpi Tests" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/tests"
+"COOLPI Documentation" ="https://graffitiprojectindigo.github.io/coolpi/"
+"COOLPI Source" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi"
+"COOLPI Tests" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/tests"
 "GitHub" = "https://github.com/GraffitiProjectINDIGO/coolpi"
 "GitHub Notebooks" = "https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks"
 "INDIGO" = "https://projectindigo.eu"
-"LBI - ARCHPRO" = "https://archpro.lbg.ac.at"
+"LBI - ArchPro" = "https://archpro.lbg.ac.at"
 "TU Wien - GEO Department"="https://www.geo.tuwien.ac.at/"
