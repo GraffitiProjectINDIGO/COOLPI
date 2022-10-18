@@ -1,0 +1,164 @@
+{
+"main": {
+    "title": "COOLPI-GUI",
+    "init_position": [0, 0],
+    "screen_size": [340, 340],
+    "init_statusbar_message": "COOLPI graphic user interface",
+    "message_screen_size": [100,100]
+},
+
+"dir_path":{
+    "csv_dir": ["data", "csv"],
+    "img_dir": [ "data", "img"],
+    "json_dir": [ "data", "json"],    
+    "plot_dir": [ "data", "plot"],
+    "spd_dir": ["data", "spd"],
+    "temp":["gui", "assets", "temp"]
+},
+
+"csc":{
+    "title": "CSC - Colour Space Conversion",
+    "screen_size": [920, 340],
+    "cie_illuminants": ["A", "C", "D50", "D55", "D65", "D75"],
+    "colour_spaces": ["CIE XYZ", "CIE xyY", "CIELAB", "CIE LCHab", "CIE LCHuv", "CIELUV"],
+    "observers": ["2","10"]
+},
+
+"cde":{
+    "title": "CDE - Colour \u0394E",
+    "screen_size": [720, 660]
+},
+
+"cpt": {
+    "title": "CPT - Colour Plot Tool",
+    "screen_size": [1050, 460]
+},
+
+"spc":{
+    "title": "SPC - Spectral Colour",
+    "screen_size": [880, 560],
+    "cie_illuminants": ["D50", "D65"],
+    "observers": ["2","10"],
+    "metadata_table_cols": 2,
+    "background_col_label": [188,245,247],
+    "background_row_label": [200,200,200]
+},
+
+"spd":{
+    "title": "SPD - Illuminant SPD",
+    "screen_size": [760, 720],
+    "cie_illuminants": [
+        "A", "C", 
+        "D50", "D55", "D65", "D75", 
+        "ID50", "ID65", 
+        "FL1", "FL2", "FL3", "FL4", "FL5", "FL6", "FL7", "FL8", "FL9", "FL10", "FL11", "FL12",
+        "FL3.1", "FL3.2", "FL3.3", "FL3.4", "FL3.5", "FL3.6", "FL3.7", "FL3.8", "FL3.9", "FL3.10", "FL3.11", "FL3.12", "FL3.13", "FL3.14", "FL3.15",
+        "HP1", "HP2", "HP3", "HP4", "HP5",
+        "LED-B1", "LED-B2", "LED-B3", "LED-B4", "LED-B5",
+        "LED-BH1", "LED-RGB1", "LED-V1", "LED-V2"]
+},
+
+"cci": {
+    "title": "CCI - Colour Checker Inspector",
+    "screen_size" :[1050, 750],
+    "colourchecker_implemented": {
+        "CCC": "Calibrite CLASSIC",
+        "CCPP2": "Calibrite PASSPORT PHOTO 2",
+        "CCPPV": "Calibrite PASSPORT VIDEO",
+        "CCDSG": "Calibrite DIGITAL SG",
+        "GM": "GretagMacbeth", 
+        "MSCB_1994": "Munsell Soil Color Book (Ed. 1994)",
+        "MSCB_2009": "Munsell Soil Color Book (Ed. 2009/2022)",
+        "PM": "Pantone Metallics",
+        "QPGQP202": "QPCARD 202",
+        "RALK5": "RAL K5 CLASSIC",
+        "RALK7": "RAL K7 CLASSIC",
+        "SCK100": "SpyderCHECKR",
+        "XRCCPP": "X-Rite PASSPORT PHOTO", 
+        "XRCCSG": "X-Rite Digital SG"},
+        
+    "metadata_table_rows": 7,
+    "metadata_table_cols": 2,
+    "max_height": 150,
+    "background_sample_id_colum": [253,194,117],
+    "background_metadata_label": [188,245,247]
+},
+
+"rcip":{
+    "title": "RCIP - RAW Colour Image Processing",
+    "screen_size": [1080, 760],
+    "img_dir": ["gui", "data", "img"],
+    "default_raw_image":["gui", "assets", "temp", "default_raw_image.jpg"],
+    "default_wb_image":["gui", "assets", "temp", "default_raw_wb_image.jpg"],
+    "default_colour_corrected":["gui", "assets", "temp", "default_colour_corrected_image.jpg"],
+    "metadata_table_cols": 2
+},
+
+"plot":{
+    "plot_figure_size": [240, 240],
+    "srgb_plot_size": 75,
+    "spectral_plot_size": [340, 280],
+    "image_view_size": [800,600],
+    "plot_dir": ["data", "plot"],
+    "file_default_image": ["gui","assets", "temp", "default.jpg"],
+    "file_default_raw_image": ["gui","assets", "temp", "default_raw_image.png"],
+    "file_default_chromaticity": ["gui","assets", "temp", "plot_current_chromaticity.png"],
+    "file_default_cielab": ["gui","assets", "temp", "plot_current_cielab.png"],
+    "file_default_spectral": ["gui","assets", "temp", "plot_current_spectral.png"],
+    "file_default_illuminant": ["gui","assets", "temp", "plot_current_illuminant.png"]
+},
+
+"zoom_plot" :{
+    "screen_size": [600, 680],
+    "plot_zoom_size": [560, 560]
+},
+
+"zoom_spectral_plot":{
+    "screen_size": [600, 540],
+    "plot_zoom_size": [560, 420]
+},
+
+"logo": {
+    "file_logo_coolpi": ["gui","assets", "logo", "coolpi.png"],
+    "file_logo_indigo": ["gui","assets", "logo", "indigo.png"],
+    "file_logo_LBI": ["gui","assets", "logo", "LBI.png"],
+    "url_indigo": "https://projectindigo.eu",
+    "url_lbi": "https://archpro.lbg.ac.at"
+},
+
+"icon":{
+    "icon_size": [32],
+    "file_cci_icon": ["gui", "assets", "icon", "cci.png"],
+    "file_cde_icon": ["gui", "assets", "icon", "cde.png"],
+    "file_cpt_icon": ["gui", "assets", "icon", "cpt.png"],
+    "file_csc_icon": ["gui", "assets", "icon", "csc.png"],
+    "file_irgbe_icon": ["gui", "assets", "icon", "irgbe.png"],
+    "file_lrm_icon": ["gui", "assets", "icon", "lrm.png"],
+    "file_quit_icon": ["gui", "assets", "icon", "quit.png"],
+    "file_rcip_icon": ["gui", "assets", "icon", "rcip.png"],
+    "file_save_icon": ["gui", "assets", "icon", "save.png"],
+    "file_spc_icon": ["gui","assets", "icon","spc.png"],
+    "file_spd_icon": ["gui","assets", "icon", "spd.png"],
+    "file_wb_icon": ["gui","assets", "icon", "wb.png"], 
+    "file_zoom_icon": ["gui","assets", "icon","zoom.png"]
+},
+
+"buttons": {
+    "colour" : "rgb(241,159,27)",
+    "icon_size": 64,
+    "border_width": "10px",
+    "border_colour": "black"
+},
+
+"colour":{
+    "rgb_indigo_colour": "rgb(39,0,137)",
+    "rgb_orange_colour" : "rgb(241,159,27)",
+    "rgb_cyan_colour": "rgb(13,172,229)",
+    "rgb_pink_colour" : "rgb(210,20,92)",
+    "rgb_blue_button": "rgb(110, 150, 240)",
+    "rgb_dark_gray": "rgb(45, 45, 48)",
+    "rgb_medium_gray": "rgb(130, 130, 130)",
+    "rgb_light_gray": "rgb(100, 100, 100)",
+    "rgb_very_light_grey": "rgb(200,200,200)"
+}
+}
