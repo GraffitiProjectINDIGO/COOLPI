@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "coolpi"
-version = "0.1.16"
+version = "0.1.18"
 authors = [
   { name="Adolfo Molada Tebar", email="a.molada.tebar@gmail.com"}]
 

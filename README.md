@@ -6,7 +6,7 @@ COlour Operations Library for Processing Images [(COOLPI)](https://github.com/Gr
 in Python for the treatment of colorimetric and spectral data. It includes classes, methods and functions developed and tested following the colorimetric standards 
 published by the Commission Internationale de l'Éclairage [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/).
 
-The COOLPI package has been developed as part of the [INDIGO](https://projectindigo.eu/) project (In-ventory and DI-sseminate G-raffiti along the 
+The COOLPI package has been developed as part of the [INDIGO](https://projectindigo.eu/) project (IN-ventory and DI-sseminate G-raffiti along the 
 d-O-naukanal) carried out by the [Ludwig Boltzmann Institute for Archaeological Prospection and Virtual Archaeology](https://archpro.lbg.ac.at/) in close collaboration with the [GEO Department of TU Wien University](https://www.geo.tuwien.ac.at/).
 
 The achievement of colour-accurate digital images is one of the primary research topics within the INDIGO project. Therefore, the COOLPI package also includes specific procedures for digital image processing and colour correction, particularly from images in RAW format. 
@@ -15,7 +15,7 @@ Although the COOLPI package has been designed mainly for Cultural Heritage docum
 
 # Modules
 
-The COOLPI library is structured in the following oriented objected programming (OOP) modules:
+The COOLPI package is structured in the following oriented objected programming (OOP) modules:
 
 - Auxiliary: scripts with common operations for the COOLPI modules.
 - Colour: CIE, Colour and Spectral classes, with the basic colorimetric tools based on CIE formulation or additional published standards.
@@ -44,7 +44,7 @@ The acquisition of colour-accurate digital images is one of the primary research
 Thus, the image module implemented in COOLPI provides the ColourChecker and Image classes, with the methods and functions necessary 
 to process and obtain accurate-colour data from digital images, especially in RAW format.
 
-In addition, a graphical interface GUI has been designed that integrates the main functionalities of the COOLPI library, 
+In addition, a graphical interface GUI has been designed that integrates the main functionalities of the COOLPI package, 
 especially designed for non-programmer users. 
 
 # Installation
@@ -101,7 +101,7 @@ A graphical user interface has been designed together with the COOLPI package. T
 in an easy and practical way the functionalities implemented in the COOLPI library. Efforts have been made to develop the graphical 
 interface in a way that makes it intuitive and friendly to use. 
 
-To run the coolpi-gui:
+To run the COOLPI-GUI:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> from coolpi.gui.app import GUI
@@ -109,7 +109,7 @@ To run the coolpi-gui:
 >>> gui.run()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The coolpi-gui includes the following tools:
+The OOLPI-GUI includes the following tools:
 
 - CSC: Colour Space Conversion
 - CDE: Colour $\Delta E$
