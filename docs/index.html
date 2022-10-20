@@ -1,6 +1,6 @@
                     <meta charset="utf-8">
-                       **Coolpi API Doc**
-                          version 0.1.16
+                       **COOLPI API Doc**
+                          version 0.1.18
 
 # Description
 
@@ -8,7 +8,7 @@ COlour Operations Library for Processing Images [(COOLPI)](https://pypi.org/proj
 the treatment of colorimetric and spectral data. It includes classes, methods and functions developed and tested following the 
 colorimetric standards published by the Commission Internationale de l'Éclairage [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/).
 
-The COOLPI package has been developed as part of the [INDIGO](https://projectindigo.eu/) project (In-ventory and 
+The COOLPI package has been developed as part of the [INDIGO](https://projectindigo.eu/) project (IN-ventory and 
 DI-sseminate G-raffiti along the d-O-naukanal) carried out by the [Ludwig Boltzmann Institute for Archaeological Prospection and Virtual Archaeology](https://archpro.lbg.ac.at/) 
 in close collaboration with the [GEO Department of TU Wien University](https://www.geo.tuwien.ac.at/).
 
@@ -31,7 +31,7 @@ The COOLPI package is freely available under the [GNU General Public License](ht
 
 ## Modules
 
-The COOLPI library is structured in the following oriented objected programming (OOP) modules:
+The COOLPI package is structured in the following oriented objected programming (OOP) modules:
 
 - <div style="text-align: justify">Auxiliary: scripts with common operations for the COOLPI modules.</div>
 - <div style="text-align: justify">Colour: [CIE](#cie), [Colour](#colour) and [Spectral](#spectral) classes, with the basic colorimetric tools based on CIE formulation or additional published standards.</div>
@@ -63,7 +63,7 @@ The acquisition of colour-accurate digital images is one of the primary research
 Thus, the image module implemented in COOLPI provides the [ColourChecker](#ColourChecker) and [Image](#Image) classes, with the methods and functions necessary 
 to process and obtain accurate-colour data from digital images, especially in RAW format.
 
-In addition, a graphical interface [GUI](#GUI) has been designed that integrates the main functionalities of the COOLPI library, 
+In addition, a graphical interface [GUI](#GUI) has been designed that integrates the main functionalities of the COOLPI package, 
 especially designed for non-programmer users. 
     
 # Installation
@@ -75,7 +75,7 @@ on the system shell:
     *pip install coolpi*
 
 !!! Warning Alert
-    *The COOLPI package is based on Python 3.9. It is therefore recommended not to work  with lower python versions, 
+    *The COOLPI package is based on Python 3.9. It is therefore recommended not to work  with lower Python versions, 
     as the correct functioning of the library is not guaranteed.* 
 
 !!! Tip Info
@@ -1660,7 +1660,7 @@ CIExyY object: Sample_1 : x =0.26781, y=0.15364, Y=5.871
 >>> sample_xyY.plot()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting True the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting True the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> sample_xyY.plot(show_figure = False, save_figure = True, output_path = path_figure)
@@ -2140,7 +2140,7 @@ CIELAB object: Sample_1 : L* =29.08465, a*=43.545095, b*=-39.821735
 >>> sample_LAB.plot()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> sample_LAB.plot(show_figure = False, save_figure = True, output_path = path_figure)
@@ -3131,7 +3131,7 @@ To <span style="color:blue">*create an instance*</span> of the *Illuminant* clas
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> from coolpi.classes.cie_colour_spectral import Illuminant
->>> D65 = Illuminant(cie_illuminant_name="d65", normalised = False)
+>>> D65 = Illuminant(cie_illuminant_name="D65", normalised = False)
 >>> type(D65)
 coolpi.colour.cie_colour_spectral.Illuminant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3142,7 +3142,7 @@ The *Illuminant* object should be instantiated for a valid CIE standard illumina
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> from coolpi.classes.cie_colour_spectral import Illuminant
->>> D30 = Illuminant(cie_illuminant_name="d30", normalised = False)
+>>> D30 = Illuminant(cie_illuminant_name="D30", normalised = False)
 CIEIlluminantError: The input illuminant name is not a valid CIE standard illuminant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -3235,7 +3235,7 @@ To set the SPD into the visible range spectrum:
 To normalise the SPD:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
->>> D65 = Illuminant(cie_illuminant_name="d65", normalised = True)
+>>> D65 = Illuminant(cie_illuminant_name="D65", normalised = True)
 >>> print(D65.normalised)
 True
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -3500,7 +3500,7 @@ Illuminant object: CIE D65 standard illuminant
 >>> D65.plot()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> D65.plot(show_figure = False, save_figure = True, output_path = path_figure)
@@ -3537,7 +3537,7 @@ The x,y values of the *Illuminant* WhitePoint can be represented as follows:
 
 ![Figure [md]: *Illuminant* x,y WhitePoint (10º observer)](md/img/D65_xy_10.jpg | width=500)
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
     
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> D65.plot_xy_white_point(observer=2, show_figure=False, save_figure=True, 
@@ -3907,7 +3907,7 @@ IlluminantFromCCT object: CCT 6500 º K
 >>> cct_6500.plot()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> cct_6500.plot(show_figure = False, save_figure = True, 
@@ -3945,7 +3945,7 @@ The x,y values of the *IlluminantFromCCT* WhitePoint can be represented as follo
 
 ![Figure [md]: *IlluminantFromCCT* xy WhitePoint (10º observer)](md/img/6500_xy_10.jpg | width=500)
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
     
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> cct_6500.plot_xy_white_point(observer=2, show_figure = False, 
@@ -4453,7 +4453,7 @@ MeasuredIlluminant object: Illuminant JND65
 >>> JND65.plot()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> JND65.plot(show_figure = False, save_figure = True, output_path = path_figure)
@@ -4490,7 +4490,7 @@ The x,y values of the *MeasuredIlluminant* WhitePoint can be represented as foll
 
 ![Figure [md]: *MeasuredIlluminant* x,y WhitePoint (10º observer)](md/img/JND65_xy_10.jpg | width=500)
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
     
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> JND65.plot_xy_white_point(observer=2, show_figure = False, 
@@ -4686,7 +4686,7 @@ WhitePoint for D65 illuminant and 2º observer: Xn=95.04, Yn=100.0, Zn=108.88
 >>> wp_d65.plot()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting True the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting True the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> wp_d65.plot(show_figure = False, save_figure = True, output_path = path_figure)
@@ -4912,7 +4912,7 @@ SpectralColour object: Sample_1
 >>> sample_spc.plot()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> sample_spc.plot(show_figure = False, save_figure = True, output_path = path_figure)
@@ -5158,7 +5158,7 @@ Reflectance object: Sample_1
 >>> sample_rfc.plot()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> sample_rfc.plot(show_figure = False, save_figure = True, output_path = path_figure)
@@ -6647,7 +6647,7 @@ The *ColourCheckerSpectral* class can be instantiated from: `checker_name` (auto
 if the colour checker is implemented), data (measured spectral data as `dict`) or from a `path_file` (valid `os` path: 
 JSON file with the spectral data).
 
-Automatic loading of spectral data from coolpi resources:
+Automatic loading of spectral data from COOLPI resources:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python
 >>> from coolpi.image.colourchecker import ColourCheckerSpectral
@@ -7073,7 +7073,7 @@ ColourCheckerSpectral object: X-rite PASSPORT PHOTO (24+26+1 patches)
 >>> XRCCPP.plot_colourchecker()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> XRCCPP.plot_colourchecker(show_figure = False, save_figure = True, output_path = path_figure)
@@ -7101,7 +7101,7 @@ A set of colour patches can be represented as follows:
 >>> XRCCPP.plot_patches(["A1","A2"])
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> XRCCPP.plot_patches(["A1","A2"], show_figure = False, save_figure = True, output_path = path_figure)
@@ -7658,7 +7658,7 @@ ColourCheckerLAB object: CCC
 >>> CCC_LAB.plot_colourchecker()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> CCC_LAB.plot_colourchecker(show_figure = False, save_figure = True, output_path = path_figure)
@@ -7686,7 +7686,7 @@ A set of colour patches can be represented as follows:
 >>> CCC_LAB.plot_patches(["A1","A2"])
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`.
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> CCC_LAB.plot_patches(["A1","A2"], show_figure = False, save_figure = True, output_path = path_figure)
@@ -8709,7 +8709,7 @@ Also, it is possible to plot the RAW RGB Histogram per channel as follows:
 >>> raw_image.plot_rgb_histogram(split_per_channel=True)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`:
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> raw_image.plot_rgb_histogram(show_figure=False, save_figure=True, output_path=path_hist, split_per_channel=True)
@@ -8746,7 +8746,7 @@ To show the *ColourcheckerRGB*:
 >>> raw_image.show_colourchecker("XRCCPP", show_image=True, method="matplotlib")
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`:
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> raw_image.show_colourchecker("XRCCPP", show_image=False, save_image=True, output_path=path_out, bits=16)
@@ -9106,7 +9106,7 @@ Also, it is possible to plot the RAW RGB Histogram per channel as follows:
 >>> processed_image.plot_rgb_histogram(split_per_channel=True)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`:
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> processed_image.plot_rgb_histogram(show_figure=False, save_figure=True, output_path=path_hist, split_per_channel=True)
@@ -9145,7 +9145,7 @@ To show the *ColourcheckerRGB*:
     method="matplotlib")
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In addition, it is posible to save the figure setting `True` the opcion `save_figure` and introducing a valid `output_path`:
+In addition, it is posible to save the figure setting `True` the option `save_figure` and introducing a valid `output_path`:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> processed_image.show_colourchecker("CCPP2", show_image=False, 
@@ -9218,7 +9218,7 @@ interface in a way that makes it intuitive and friendly to use.
 
 ## Run 
 
-To run the coolpi-gui, simply type the following command lines:
+To run the COOLPI-GUI, simply type the following command lines:
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
 >>> from coolpi.gui.app import GUI
@@ -9228,7 +9228,7 @@ To run the coolpi-gui, simply type the following command lines:
 
 ## Home Screen
 
-The coolpi-gui includes the following tools:
+The COOLPI-GUI includes the following tools:
 
 - CSC: [Colour Space Conversion](#CSC)
 - CDE: [Colour $\Delta E$](#Colour-difference)
@@ -9372,10 +9372,10 @@ This button is active once the spectral power distribution of the illuminant has
 **Tool to deal with [colour checkers](#ColourChecker).**
 
 Colour checkers are a widely used tool in digital photography, especially for white balance adjustment and colour calibration. There are different colour checkers, provided by different 
-manufacturers. The most widespread are probably those made by X-Rite (now Calibrite) and Datacolor. In coolpi-gui we have tried to include the most widespread ones, 
+manufacturers. The most widespread are probably those made by X-Rite (now Calibrite) and Datacolor. In COOLPI-GUI we have tried to include the most widespread ones, 
 not only for digital imaging applications, but also for other disciplines (e.g. the Munsell Soil Color Book for the measurement of colour of soil samples).
 
-The following ColourCheckers have been implemented in the coolpi-gui:
+The following ColourCheckers have been implemented in the COOLPI-GUI:
 
 - Calibrite CLASSIC (CCC).
 - Calibrite PASSPORT PHOTO 2 (CCPP2).
