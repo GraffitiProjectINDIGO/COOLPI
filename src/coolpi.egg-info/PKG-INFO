@@ -1,0 +1,148 @@
+Metadata-Version: 2.1
+Name: coolpi
+Version: 0.1.18
+Summary: COlour Operations Library for Processing Images
+Author-email: Adolfo Molada Tebar <a.molada.tebar@gmail.com>
+Project-URL: COOLPI Documentation, https://graffitiprojectindigo.github.io/coolpi/
+Project-URL: COOLPI Source, https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi
+Project-URL: COOLPI Tests, https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/tests
+Project-URL: GitHub, https://github.com/GraffitiProjectINDIGO/coolpi
+Project-URL: GitHub Notebooks, https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks
+Project-URL: INDIGO, https://projectindigo.eu
+Project-URL: LBI - ArchPro, https://archpro.lbg.ac.at
+Project-URL: TU Wien - GEO Department, https://www.geo.tuwien.ac.at/
+Classifier: Programming Language :: Python :: 3.9
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# COOLPI
+
+# Description
+
+COlour Operations Library for Processing Images [(COOLPI)](https://github.com/GraffitiProjectINDIGO/coolpi) is an open-source toolbox programmed 
+in Python for the treatment of colorimetric and spectral data. It includes classes, methods and functions developed and tested following the colorimetric standards 
+published by the Commission Internationale de l'Éclairage [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/).
+
+The COOLPI package has been developed as part of the [INDIGO](https://projectindigo.eu/) project (IN-ventory and DI-sseminate G-raffiti along the 
+d-O-naukanal) carried out by the [Ludwig Boltzmann Institute for Archaeological Prospection and Virtual Archaeology](https://archpro.lbg.ac.at/) in close collaboration with the [GEO Department of TU Wien University](https://www.geo.tuwien.ac.at/).
+
+The achievement of colour-accurate digital images is one of the primary research topics within the INDIGO project. Therefore, the COOLPI package also includes specific procedures for digital image processing and colour correction, particularly from images in RAW format. 
+
+Although the COOLPI package has been designed mainly for Cultural Heritage documentation applications based on digital imaging techniques, we are confident that its applicability can be extended to any discipline where colour accurate registration is required.
+
+# Modules
+
+The COOLPI package is structured in the following oriented objected programming (OOP) modules:
+
+- Auxiliary: scripts with common operations for the COOLPI modules.
+- Colour: CIE, Colour and Spectral classes, with the basic colorimetric tools based on CIE formulation or additional published standards.
+- Image: ColourChecker and Image classes with the methods and functions for image processing.
+
+The COOLPI auxilary module integrates functions that are used in the classes to carry out operations related to data loading and checking,
+creation and display of colorimetric and spectral graphs, and so on. It also includes the errors module, with the exceptions associated with each of the classes. 
+
+The recommended way to import the auxiliary modules is as follows:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
+>>> import coolpi.auxiliary.common_operations as cop
+>>> import coolpi.auxiliary.load_data as ld
+>>> import coolpi.auxiliary.export_data as ed
+>>> import coolpi.auxiliary.plot as cpt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The auxiliary functions are designed to support the COOLPI library classes, they are not intended to be used independently by the user. 
+However, they can be imported and used directly from Python if desired.
+
+The colour module is one of the pillars of the COOLPI package, and is based on the colorimetric recommendations 
+of the CIE [(CIE, 2018)](https://cie.co.at/publications/colorimetry-4th-edition/). This module includes the CIE, Colour and Spectral main classes, and the implementation of the basic tools for the colorimetric and spectral treatment of the data.
+
+The acquisition of colour-accurate digital images is one of the primary research topics in the international graffiti project [INDIGO](https://projectindigo.eu/). 
+Thus, the image module implemented in COOLPI provides the ColourChecker and Image classes, with the methods and functions necessary 
+to process and obtain accurate-colour data from digital images, especially in RAW format.
+
+In addition, a graphical interface GUI has been designed that integrates the main functionalities of the COOLPI package, 
+especially designed for non-programmer users. 
+
+# Installation
+
+The COOLPI package can be installed directly from [PyPi](https://pypi.org/) running the pip command 
+on the system shell:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
+>>> pip install coolpi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The COOLPI package is based on Python 3.9. It is therefore recommended not to work  with lower python versions, 
+as the correct functioning of the library is not guaranteed.</div>
+
+# Dependencies
+
+For the proper operation of COOLPI, the following packages must be installed together:
+
+- Create plots and figures: [matplotlib 3.5.2](https://matplotlib.org/stable/index.html) 
+- Scientific computing: [numpy 1.22.4](https://numpy.org/doc/1.22/reference/index.html)
+- Computer vision: [opencv-python 4.6.0.66](https://pypi.org/project/opencv-python/)
+- Data Analysis: [pandas 1.4.2](https://pandas.pydata.org/pandas-docs/version/1.4/index.html)
+- Qt (GUI): [pyside6 6.3.0](https://pypi.org/project/PySide6/)
+- RAW image processing: [rawpy 0.17.1](https://pypi.org/project/rawpy/)
+- Scientific computing: [scipy 1.8.1](https://docs.scipy.org/doc/scipy/reference/index.html#scipy-api)
+- Statistical data visualization: [seaborn 0.11.2](https://seaborn.pydata.org/tutorial.html)
+
+The dependencies should have been installed automatically along with COOLPI. Please check that everything is correct.
+
+# Notebooks
+
+A series of interactive [Jupyter Notebooks](https://jupyter.org) have been prepared. They include practical examples 
+to help users become familiar with the classes, methods and functions implemented in the COOLPI package. 
+
+- 01 CIE objects. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/01_CIE_objects.ipynb)
+- 02a Colour objects. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/02a_Colour_objects.ipynb)
+- 02b CSC - Colour Space Conversion. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/02b_CSC_Colour_Space_Conversion.ipynb)
+- 02c CSC - Data test (Ohta&Robertson 2005). [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/02c_CSC_Test_data.ipynb)
+- 03a Spectral objects. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/03a_Spectral_objects.ipynb)
+- 04a Colour-difference. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/04a_Colour-difference.ipynb)
+- 04b CIEDE2000 - Test data (Sharma et al., 2005). [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/04b_CIEDE2000_Test_data.ipynb)
+- 05 ColourChecker objects.[(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/05_ColourChecker_objects.ipynb)
+- 06 Image objects. [(GitHub)](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/06_Image_objects.ipynb)
+- 07 ColourCheckerRGB Data Extraction from Images [GitHub](https://github.com/GraffitiProjectINDIGO/coolpi/blob/main/notebooks/07_ColourCheckerRGB_data_extraction_from_images.ipynb)
+
+Users can find the interative Jupyter Notebooks in the [notebook folder of the COOLPI repository on GitHub](https://github.com/GraffitiProjectINDIGO/coolpi/notebooks).
+
+In order to use the interactive notebooks, [JupyterLab](https://jupyter.org/install), or its extension in the code editor used, 
+must be installed beforehand.
+
+# GUI
+
+A graphical user interface has been designed together with the COOLPI package. The aim is to help especially non-programmers to use in an easy and practical way the functionalities implemented in the COOLPI package. Efforts have been made to develop the graphical interface in a way that makes it intuitive and friendly to use. 
+
+To run the COOLPI-GUI:
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Python 
+>>> from coolpi.gui.app import GUI
+>>> gui = GUI()
+>>> gui.run()
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The COOLPI-GUI includes the following tools:
+
+- CSC: Colour Space Conversion
+- CDE: Colour $\Delta E$
+- CPT: Colour Plot Tool
+- SPC: Spectral Colour
+- SPD: Illuminant SPD
+- CCI: ColourChecker Inspector
+- RCIP: RAW Colour Image Processing
+
+# Project links
+
+- [COOLPI Documentation](https://graffitiprojectindigo.github.io/coolpi/)
+- [COOLPI Source](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi)
+- [COOLPI Tests](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/tests)
+- [GitHub](https://github.com/GraffitiProjectINDIGO/coolpi)
+- [GitHub Notebooks](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/notebooks)
+- [INDIGO](https://projectindigo.eu)
+- [LBI - ARCHPRO](https://archpro.lbg.ac.at)
+- [TU Wien - GEO Department](https://www.geo.tuwien.ac.at/)
