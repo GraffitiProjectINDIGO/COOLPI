@@ -122,7 +122,7 @@ The OOLPI-GUI includes the following tools:
 # Project links
 
 - [COOLPI PyPi](https://pypi.org/project/coolpi/)
-- [COOLPI Documentation](https://graffitiprojectindigo.github.io/coolpi/)
+- [COOLPI Documentation](https://graffitiprojectindigo.github.io/COOLPI/)
 - [COOLPI Source](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/src/coolpi)
 - [COOLPI Tests](https://github.com/GraffitiProjectINDIGO/coolpi/tree/main/tests)
 - [GitHub](https://github.com/GraffitiProjectINDIGO/coolpi)
